@@ -1,0 +1,12 @@
+# Dependency directory
+node_modules
+
+# Temporary local files
+.tmp
+
+# IDEs
+.vscode
+
+# build folders
+.astro
+dist
