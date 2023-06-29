@@ -1,55 +1,32 @@
 /* eslint-env node */
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
     root: true,
-    plugins: ['jsdoc'],
-    extends: ['eslint:recommended', 'plugin:jsdoc/recommended', 'prettier'],
+    plugins: ['@typescript-eslint', 'jsdoc'],
+    extends: [
+        'plugin:astro/recommended',
+        'plugin:astro/jsx-a11y-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:jsdoc/recommended',
+        'prettier',
+    ],
+
+    parser: '@typescript-eslint/parser',
     parserOptions: {
+        tsconfigRootDir: __dirname,
         ecmaVersion: 'latest',
         impliedStrict: true,
-        // default to module
         sourceType: 'module',
+        project: './tsconfig.json',
     },
     overrides: [
         {
-            files: ['**/*.cjs'],
+            files: ['*.astro'],
+            parser: 'astro-eslint-parser',
             parserOptions: {
-                // cjs compatibility
-                sourceType: 'script',
-            },
-        },
-        {
-            // typescript defaults
-            files: ['**/*.{ts,tsx}'],
-            plugins: ['@typescript-eslint', 'jsdoc'],
-            extends: [
-                'eslint:recommended',
-                'plugin:@typescript-eslint/recommended',
-                'plugin:@typescript-eslint/recommended-requiring-type-checking',
-                'plugin:jsdoc/recommended',
-                'prettier',
-            ],
-            parser: '@typescript-eslint/parser',
-            parserOptions: {
-                ecmaFeatures: {
-                    jsx: true,
-                },
-                ecmaVersion: 'latest',
-                impliedStrict: true,
-                sourceType: 'module',
-                // project for non-src files
-                project: 'tsconfig.node.json',
-                tsconfigRootDir: __dirname,
-            },
-            rules: {
-                // not using jest
-                'jest/no-deprecated-functions': 0,
-            },
-        },
-        {
-            files: ['src/**/*.{ts,tsx}'],
-            parserOptions: {
-                // project for src files
-                project: 'tsconfig.json',
+                parser: '@typescript-eslint/parser',
+                extraFileExtensions: ['.astro'],
             },
         },
     ],
