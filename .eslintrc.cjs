@@ -3,12 +3,6 @@
 module.exports = {
     root: true,
     plugins: ['@typescript-eslint', 'jsdoc'],
-    extends: [
-        'plugin:astro/recommended',
-        'plugin:astro/jsx-a11y-recommended',
-        'plugin:jsdoc/recommended',
-        'prettier',
-    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         tsconfigRootDir: __dirname,
@@ -20,6 +14,12 @@ module.exports = {
     overrides: [
         {
             files: ['*.astro'],
+            extends: [
+                'plugin:astro/recommended',
+                'plugin:astro/jsx-a11y-recommended',
+                'plugin:jsdoc/recommended-typescript',
+                'prettier',
+            ],
             parser: 'astro-eslint-parser',
             parserOptions: {
                 parser: '@typescript-eslint/parser',

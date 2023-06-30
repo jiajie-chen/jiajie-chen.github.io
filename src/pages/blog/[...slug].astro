@@ -1,7 +1,11 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 import BlogPost from '../../layouts/BlogPost.astro'
 
+/**
+ * Generates SSG paths for blog posts.
+ * @returns Astro paths to all blog posts in the collection.
+ */
 export async function getStaticPaths() {
     const posts = await getCollection('blog')
     return posts.map((post) => ({
