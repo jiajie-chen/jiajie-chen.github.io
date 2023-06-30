@@ -27,7 +27,17 @@ module.exports = {
             },
         },
         {
-            files: ['*.js', '*.cjs', '*.mjs', '*.ts'],
+            files: ['*.ts'],
+            extends: [
+                'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
+                'plugin:@typescript-eslint/recommended-requiring-type-checking',
+                'plugin:jsdoc/recommended-typescript',
+                'prettier',
+            ],
+        },
+        {
+            files: ['*.js', '*.cjs', '*.mjs'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',
