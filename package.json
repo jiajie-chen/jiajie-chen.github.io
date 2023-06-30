@@ -8,7 +8,7 @@
         "setup:astro": "astro sync",
         "setup:husky": "husky install",
         "lint": "npm run lint:es || npm run lint:style",
-        "lint:es": "eslint --ext .js,jsx,ts,tsx,mjs,cjs,astro .",
+        "lint:es": "eslint --ext .js,ts,mjs,cjs,astro .",
         "lint:style": "stylelint **/*.css",
         "format": "prettier --ignore-unknown --write .",
         "dev": "astro dev",
@@ -50,7 +50,7 @@
         ]
     },
     "lint-staged": {
-        "*.{js,jsx,ts,tsx,mjs,cjs,astro}": "eslint",
+        "*.{js,ts,mjs,cjs,astro}": "eslint",
         "*.css": "stylelint",
         "*": "prettier --ignore-unknown --write"
     }

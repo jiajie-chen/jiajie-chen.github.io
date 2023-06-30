@@ -6,12 +6,9 @@ module.exports = {
     extends: [
         'plugin:astro/recommended',
         'plugin:astro/jsx-a11y-recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:jsdoc/recommended',
         'prettier',
     ],
-
     parser: '@typescript-eslint/parser',
     parserOptions: {
         tsconfigRootDir: __dirname,
@@ -28,6 +25,16 @@ module.exports = {
                 parser: '@typescript-eslint/parser',
                 extraFileExtensions: ['.astro'],
             },
+        },
+        {
+            files: ['*.js', '*.cjs', '*.mjs', '*.ts'],
+            extends: [
+                'eslint:recommended',
+                'plugin:@typescript-eslint/recommended',
+                'plugin:@typescript-eslint/recommended-requiring-type-checking',
+                'plugin:jsdoc/recommended',
+                'prettier',
+            ],
         },
     ],
 }
