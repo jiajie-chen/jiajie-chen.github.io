@@ -10,6 +10,7 @@
         "src/**/*",
         ".eslintrc.cjs",
         ".prettierrc.cjs",
-        "astro.config.mjs"
+        "astro.config.mjs",
+        "tailwind.config.cjs"
     ]
 }
