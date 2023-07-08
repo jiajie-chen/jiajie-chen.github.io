@@ -8,12 +8,12 @@
         "setup:astro": "astro sync",
         "setup:husky": "husky install",
         "lint": "run-s lint:*",
-        "lint:es": "eslint --ext .js,ts,mjs,cjs,astro .",
-        "lint:style": "stylelint **/*.css",
+        "lint:es": "eslint .",
+        "lint:style": "stylelint \"**/*.css\"",
         "format": "prettier --ignore-unknown --write .",
         "dev": "astro dev",
         "start": "astro dev",
-        "build": "astro build",
+        "build": "astro check && tsc --noEmit && astro build",
         "preview": "astro preview",
         "astro": "astro"
     },
@@ -53,10 +53,5 @@
         "extends": [
             "stylelint-config-standard"
         ]
-    },
-    "lint-staged": {
-        "*.{js,ts,mjs,cjs,astro}": "eslint",
-        "*.css": "stylelint",
-        "*": "prettier --ignore-unknown --write"
     }
 }

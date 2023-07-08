@@ -1,9 +1,12 @@
 /* eslint-env node */
+import tailwindTypography from '@tailwindcss/typography'
+import daisyui from 'daisyui'
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     content: ['./src/**/*.{astro,html,js,md,mdx,ts}'],
     theme: {
         extend: {},
     },
-    plugins: [require('@tailwindcss/typography'), require('daisyui')],
+    plugins: [tailwindTypography, daisyui],
 }

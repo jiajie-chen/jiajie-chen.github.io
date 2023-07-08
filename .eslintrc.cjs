@@ -27,7 +27,7 @@ module.exports = {
             },
         },
         {
-            files: ['*.ts'],
+            files: ['*.ts', '*.tsx'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',
@@ -37,7 +37,7 @@ module.exports = {
             ],
         },
         {
-            files: ['*.js', '*.cjs', '*.mjs'],
+            files: ['*.js', '*.cjs', '*.mjs', '*.jsx'],
             extends: [
                 'eslint:recommended',
                 'plugin:@typescript-eslint/recommended',

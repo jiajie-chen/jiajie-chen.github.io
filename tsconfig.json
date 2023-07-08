@@ -4,13 +4,12 @@
         "strictNullChecks": true,
         "allowJs": true,
         "checkJs": true,
-        "verbatimModuleSyntax": true
+        "verbatimModuleSyntax": true,
+        "baseUrl": ".",
+        "paths": {
+            "@components/*": ["src/components/*"],
+            "@layouts/*": ["src/layouts/*"]
+        }
     },
-    "include": [
-        "src/**/*",
-        ".eslintrc.cjs",
-        ".prettierrc.cjs",
-        "astro.config.mjs",
-        "tailwind.config.cjs"
-    ]
+    "include": ["src/**/*", "*", ".*"]
 }
