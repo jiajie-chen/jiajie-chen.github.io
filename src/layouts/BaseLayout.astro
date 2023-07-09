@@ -1,0 +1,48 @@
+---
+import BaseHead from '@components/BaseHead.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '@consts'
+
+type BaseHeadProps = Parameters<typeof BaseHead>[0]
+type HeaderProps = Parameters<typeof Header>[0]
+export interface Props {
+    baseHeadProps?: Partial<BaseHeadProps>
+    headerProps: HeaderProps
+    children: any
+}
+
+const { baseHeadProps = {}, headerProps } = Astro.props
+// set defaults if not specified
+const mergedBaseHeadProps: BaseHeadProps = {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    image: '/placeholder-social.jpg',
+    ...baseHeadProps,
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead {...mergedBaseHeadProps} />
+        <slot name="head" />
+    </head>
+
+    <body class="flex flex-col flex-nowrap min-h-screen">
+        <Header {...headerProps} />
+
+        <div
+            class="grow grid grid-cols-1 grid-flow-col bg-base-200 justify-items-center">
+            <main
+                class:list={[
+                    'bg-base-100 py-6 px-12 w-screen',
+                    'md:w-[48rem] md:-mt-8 md:rounded-t-lg',
+                ]}>
+                <slot />
+            </main>
+        </div>
+
+        <Footer />
+    </body>
+</html>

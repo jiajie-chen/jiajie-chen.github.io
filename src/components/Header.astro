@@ -1,26 +1,48 @@
 ---
-import HeaderLink from './HeaderLink.astro'
-import { SITE_TITLE } from '../consts'
+import HeaderLink from '@components/HeaderLink.astro'
+import type { HTMLAttributes } from 'astro/types'
+
+export interface Props {
+    headerImage?: URL | string
+    title: string
+}
+
+const { headerImage, title } = Astro.props
+
+const isImage = headerImage !== undefined
+
+const headerImageStyle = isImage
+    ? { 'background-image': `url(${headerImage.toString()})` }
+    : null
+
+const headerNavLinks: Array<[string, string]> = [
+    ['Home', '/'],
+    ['Blog', '/blog'],
+    ['Projects', '/projects'],
+]
 ---
 
-<header>
-    <h2>
-        {SITE_TITLE}
-    </h2>
-    <nav>
-        <HeaderLink href="/">Home</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/about">About</HeaderLink>
-        <HeaderLink href="https://github.com/jiajie-chen" target="_blank">
-            GitHub
-        </HeaderLink>
+<header
+    class="hero bg-base-300 flex-none min-h-[40vh]"
+    style={headerImageStyle}>
+    {isImage && <div class="hero-overlay bg-opacity-80" />}
+
+    <nav class="hero-content flex-col text-center text-neutral-content mb-8">
+        <h2>
+            {title}
+        </h2>
+
+        <ul
+            class="menu grid grid-flow-col auto-cols-fr bg-base-300 text-base-content rounded-box">
+            {
+                headerNavLinks.map(([navText, navHref]) => (
+                    <li class="grid">
+                        <HeaderLink class="place-content-center" href={navHref}>
+                            {navText}
+                        </HeaderLink>
+                    </li>
+                ))
+            }
+        </ul>
     </nav>
 </header>
-<style>
-    header {
-        margin: 0em 0 2em;
-    }
-    h2 {
-        margin: 0.5em 0;
-    }
-</style>
